@@ -24,19 +24,31 @@ export default function Home() {
       </Head>
 
       <PageWrapper>
-        <h1 className="text-2xl font-bold mb-4">Availability</h1>
-        <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-          <div className="px-4 py-5 sm:px-6">
-            <p className="mt-1 max-w-2xl text-md text-gray-400 font-semibold">
-              What are your operating hours?{" "}
-            </p>
-          </div>
-          {rows.map(({ day }) => (
-            <Row title={day} key={day} />
-          ))}
-        </div>
+        <Card
+          title="Availability"
+          subtitle="What are your operating hours?"
+          rows={rows}
+        />
       </PageWrapper>
     </div>
+  );
+}
+
+function Card({ title, subtitle, rows }) {
+  return (
+    <>
+      <h1 className="text-2xl font-bold mb-4">{title}</h1>
+      <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div className="px-4 py-5 sm:px-6">
+          <p className="mt-1 max-w-2xl text-md text-gray-400 font-semibold">
+            {subtitle}
+          </p>
+        </div>
+        {rows.map(({ day }) => (
+          <Row title={day} key={day} />
+        ))}
+      </div>
+    </>
   );
 }
 
